@@ -1,8 +1,8 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
-use TBlack\MondayAPI\Querying\Query;
+use MondayAPI\Querying\Query;
 
 class ObjectModel
 {
@@ -15,37 +15,31 @@ class ObjectModel
     // Fields
     static $fields = array();
 
-    function __construct()
-    {
+    function __construct() {
         return $this;
     }
 
-    public function getFields( Array $fields = [], $alt_fields = false )
-    {
-        return [ Query::buildFields(
+    public function getFields(array $fields = [], $alt_fields = false) {
+        return [Query::buildFields(
             Query::buildFieldsArgs(
-                ($alt_fields==false?static::$fields:$alt_fields),
+                ($alt_fields == false ? static::$fields : $alt_fields),
                 $fields
             )
         )];
     }
 
-    public function getArguments( Array $arguments = [], $alt_arguments = false, String $prepend_args = '' )
-    {
+    public function getArguments(array $arguments = [], $alt_arguments = false, String $prepend_args = '') {
         return Query::buildArguments(
             Query::buildArgsFields(
-                ($alt_arguments==false?static::$arguments:$alt_arguments),
+                ($alt_arguments == false ? static::$arguments : $alt_arguments),
                 $arguments
             ),
             $prepend_args
         );
     }
 
-    public function getBuildFieldsArgs()
-    {
+    public function getBuildFieldsArgs() {
         //return '{ ... }';
         return false;
     }
 }
-
-?>

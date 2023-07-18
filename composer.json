@@ -1,19 +1,20 @@
 {
-  "name" : "social-places/monday-api",
-  "description" : "Monday v2 API forked from TBLACK-IT",
-  "authors": [
-    {
-        "name": "Pedro Teixeira",
-        "email": "pedro.teixeira@tblack-it.com"
-    }
-  ],
-  "require": {
-      "php": ">=5.5.0"
-  },
-  "autoload" : {
-    "psr-4" : {
-      "TBlack\\MondayAPI\\": ""
-    }
-  },
-  "license": "LGPL-2.1-only"
+    "name" : "social-places/monday-api",
+    "description" : "Monday v2 API forked from TBLACK-IT",
+    "authors" : [
+        {
+            "name" : "Pedro Teixeira",
+            "email" : "pedro.teixeira@tblack-it.com"
+        }
+    ],
+    "require" : {
+        "php" : ">=5.5.0",
+        "ext-json" : "*"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "MondayAPI\\" : "src/MondayAPI"
+        }
+    },
+    "license" : "LGPL-2.1-only"
 }

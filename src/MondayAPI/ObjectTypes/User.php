@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
 class User extends ObjectModel
 {
@@ -13,5 +13,3 @@ class User extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

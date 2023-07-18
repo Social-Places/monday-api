@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
 class BoardKind
 {
@@ -8,5 +8,3 @@ class BoardKind
     const PRV = 'private';
     const SHR = 'share';
 }
-
-?>

@@ -1,17 +1,15 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
 class Group extends ObjectModel
 {
-		// Query scope
-		static $scope = 'groups';
+    // Query scope
+    static $scope = 'groups';
 
-		// Arguments
-		static $arguments = array();
+    // Arguments
+    static $arguments = array();
 
-		// Fields
-		static $fields = array();
+    // Fields
+    static $fields = array();
 }
-
-?>

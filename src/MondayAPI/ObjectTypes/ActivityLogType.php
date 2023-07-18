@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
 class ActivityLogType extends ObjectModel
 {
@@ -13,5 +13,3 @@ class ActivityLogType extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>
