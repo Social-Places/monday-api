@@ -1,13 +1,13 @@
 <?php
 
-namespace TBlack\MondayAPI;
+namespace MondayAPI;
 
-use TBlack\MondayAPI\Querying\Query;
-use TBlack\MondayAPI\ObjectTypes\Item;
-use TBlack\MondayAPI\ObjectTypes\SubItem;
-use TBlack\MondayAPI\ObjectTypes\Board;
-use TBlack\MondayAPI\ObjectTypes\Column;
-use TBlack\MondayAPI\ObjectTypes\BoardKind;
+use MondayAPI\Querying\Query;
+use MondayAPI\ObjectTypes\Item;
+use MondayAPI\ObjectTypes\SubItem;
+use MondayAPI\ObjectTypes\Board;
+use MondayAPI\ObjectTypes\Column;
+use MondayAPI\ObjectTypes\BoardKind;
 
 class MondayBoard extends MondayAPI
 {
@@ -197,6 +197,3 @@ class MondayBoard extends MondayAPI
         return $this->request(self::TYPE_MUTAT, $query);
     }
 }
-
-
-?>

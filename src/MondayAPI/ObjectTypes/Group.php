@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
 class Group extends ObjectModel
 {

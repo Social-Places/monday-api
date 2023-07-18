@@ -26,8 +26,8 @@ Init Monday connector
 require 'vendor/autoload.php';
 
 $token = 'API_TOKEN';
-$MondayBoard = new TBlack\MondayAPI\MondayBoard();
-$MondayBoard->setToken(new TBlack\MondayAPI\Token($token));
+$MondayBoard = new MondayAPI\MondayBoard();
+$MondayBoard->setToken(new MondayAPI\Token($token));
 
 ```
 
@@ -46,7 +46,7 @@ $board_id = 10012;
 $boardColumns = $MondayBoard->on($board_id)->getColumns();
 
 # Create Board, if success return board_id
-$newboard = $MondayBoard->create( 'New Board Name', TBlack\MondayAPI\ObjectTypes\BoardKind::PUB );
+$newboard = $MondayBoard->create( 'New Board Name', MondayAPI\ObjectTypes\BoardKind::PUB );
 $board_id = $newboard['create_board']['id'];
 
 ```

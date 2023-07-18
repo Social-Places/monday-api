@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI\Querying;
+namespace MondayAPI\Querying;
 
 class Query
 {
@@ -13,7 +13,7 @@ class Query
         }else if( $field_typedata['type'] === 'Boolean' ){
             return true;
         }else if( isset($field_typedata['object']) ){
-            $class_name = 'TBlack\MondayAPI\ObjectTypes\\' . $field_typedata['object'];
+            $class_name = 'MondayAPI\ObjectTypes\\' . $field_typedata['object'];
             if( class_exists($class_name) ){
                 $Object = new $class_name();
                 return $Object->getBuildFieldsArgs();

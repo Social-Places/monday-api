@@ -1,8 +1,8 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
-use TBlack\MondayAPI\ObjectTypes\ObjectModel;
+use MondayAPI\ObjectTypes\ObjectModel;
 
 class SubItem extends ObjectModel
 {

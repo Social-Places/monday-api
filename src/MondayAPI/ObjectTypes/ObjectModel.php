@@ -1,8 +1,8 @@
 <?php
 
-namespace TBlack\MondayAPI\ObjectTypes;
+namespace MondayAPI\ObjectTypes;
 
-use TBlack\MondayAPI\Querying\Query;
+use MondayAPI\Querying\Query;
 
 class ObjectModel
 {
@@ -47,5 +47,3 @@ class ObjectModel
         return false;
     }
 }
-
-?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace TBlack\MondayAPI;
+namespace MondayAPI;
 
 class Token
 {
