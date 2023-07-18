@@ -13,5 +13,3 @@ class User extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

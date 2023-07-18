@@ -5,40 +5,35 @@ namespace MondayAPI;
 class MondayAPI
 {
     private $APIV2_Token;
-    private $API_Url     = "https://api.monday.com/v2/";
-    private $debug       = false;
+    private $API_Url = "https://api.monday.com/v2/";
+    private $debug = false;
 
-    const TYPE_QUERY    = 'query';
-    const TYPE_MUTAT    = 'mutation';
+    const TYPE_QUERY = 'query';
+    const TYPE_MUTAT = 'mutation';
 
-    function __construct( Bool $debug = false )
-    {
+    function __construct(Bool $debug = false) {
         $this->debug = $debug;
     }
 
-    private function printDebug($print)
-    {
+    private function printDebug($print) {
         echo '<div style="background: #f9f9f9; padding: 20px; position: relative; border: solid 1px #dedede;">
-        '.$print.'
+        ' . $print . '
         </div>';
     }
 
-    public function setToken( Token $token )
-    {
+    public function setToken(Token $token) {
         $this->APIV2_Token = $token;
         return $this;
     }
 
-    private function content($type, $request)
-    {
-        if($this->debug){
-            $this->printDebug( $type.' { '.$request.' } ' );
+    private function content($type, $request) {
+        if ($this->debug) {
+            $this->printDebug($type . ' { ' . $request . ' } ');
         }
-        return json_encode(['query' => $type.' { '.$request.' } ']);
+        return json_encode(['query' => $type . ' { ' . $request . ' } ']);
     }
 
-    protected function request( $type = self::TYPE_QUERY, $request = null )
-    {
+    protected function request($type = self::TYPE_QUERY, $request = null) {
         $headers = [
             'Content-Type: application/json',
             'User-Agent: [Tblack-IT] GraphQL Client',
@@ -53,24 +48,21 @@ class MondayAPI
             ]
         ]));
 
-        return $this->response( $data );
+        return $this->response($data);
     }
 
-    protected function response( $data )
-    {
-        if(!$data)
+    protected function response($data) {
+        if (!$data)
             return false;
 
         $json = json_decode($data, true);
 
-        if( isset($json['data']) ){
+        if (isset($json['data'])) {
             return $json['data'];
-        }else if( isset($json['errors']) && is_array($json['errors']) ){
+        } else if (isset($json['errors']) && is_array($json['errors'])) {
             return $json['errors'];
         }
 
         return false;
     }
 }
-
-?>

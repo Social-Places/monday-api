@@ -13,5 +13,3 @@ class Tag extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

@@ -13,5 +13,3 @@ class ActivityLogType extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

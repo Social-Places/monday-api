@@ -13,5 +13,3 @@ class Update extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

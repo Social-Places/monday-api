@@ -13,5 +13,3 @@ class BoardView extends ObjectModel
     // Fields
     static $fields = array();
 }
-
-?>

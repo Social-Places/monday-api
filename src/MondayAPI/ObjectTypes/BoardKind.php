@@ -8,5 +8,3 @@ class BoardKind
     const PRV = 'private';
     const SHR = 'share';
 }
-
-?>
