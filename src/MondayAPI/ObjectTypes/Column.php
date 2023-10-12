@@ -26,7 +26,7 @@ class Column extends ObjectModel
         if (!empty($items)) {
             foreach ($items as $key => $value) {
                 $column_values[$key] = self::newColValue($key, $value);
-            }s
+            }
         }
         return addslashes(json_encode($column_values));
     }
