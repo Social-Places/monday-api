@@ -35,21 +35,31 @@ class MondayAPI
     }
 
     protected function request($type = self::TYPE_QUERY, $request = null) {
-        $headers = [
-            'Content-Type: application/json',
-            'User-Agent: [Tblack-IT] GraphQL Client',
-            'Authorization: ' . $this->APIV2_Token->getToken()
-        ];
+        set_error_handler(
+            function ($severity, $message, $file, $line) {
+                throw new \ErrorException($message, $severity, $severity, $file, $line);
+            }
+        );
 
-        $data = @file_get_contents($this->API_Url, false, stream_context_create([
-            'http' => [
-                'method' => 'POST',
-                'header' => $headers,
-                'content' => $this->content($type, $request),
-            ]
-        ]));
+        try {
+            $headers = [
+                'Content-Type: application/json',
+                'User-Agent: [Tblack-IT] GraphQL Client',
+                'Authorization: ' . $this->APIV2_Token->getToken()
+            ];
 
-        return $this->response($data);
+            $data = @file_get_contents($this->API_Url, false, stream_context_create([
+                'http' => [
+                    'method' => 'POST',
+                    'header' => $headers,
+                    'content' => $this->content($type, $request),
+                ]
+            ]));
+            return $this->response($data);
+        } catch (\Exception $e) {
+            $this->error = $e->getMessage();
+            return false;
+        }
     }
 
     protected function response($data) {
