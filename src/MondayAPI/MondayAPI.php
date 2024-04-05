@@ -41,7 +41,6 @@ class MondayAPI
             'Authorization: ' . $this->APIV2_Token->getToken()
         ];
 
-//        if ($type === self::TYPE_QUERY) {
         $data = @file_get_contents($this->API_Url, false, stream_context_create([
             'http' => [
                 'method' => 'POST',
@@ -51,11 +50,6 @@ class MondayAPI
         ]));
 
         return $this->response($data);
-
-        /*        } else {
-                    dump($this->content($type, $request));
-                }*/
-
     }
 
     protected function response($data) {
