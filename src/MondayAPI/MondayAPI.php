@@ -7,13 +7,11 @@ class MondayAPI
     private $APIV2_Token;
     private $API_Url = "https://api.monday.com/v2/";
     private $debug = false;
-    public $error = '';
-
 
     const TYPE_QUERY = 'query';
     const TYPE_MUTAT = 'mutation';
 
-    function __construct(Bool $debug = false) {
+    function __construct(bool $debug = false) {
         $this->debug = $debug;
     }
 
@@ -29,14 +27,14 @@ class MondayAPI
     }
 
     private function content($type, $request) {
+        $request = $this->replaceUnwantedCharacters($request);
         if ($this->debug) {
             $this->printDebug($type . ' { ' . $request . ' } ');
         }
         return json_encode(['query' => $type . ' { ' . $request . ' } ']);
     }
 
-    protected function request( $type = self::TYPE_QUERY, $request = null )
-    {
+    protected function request($type = self::TYPE_QUERY, $request = null) {
         set_error_handler(
             function ($severity, $message, $file, $line) {
                 throw new \ErrorException($message, $severity, $severity, $file, $line);
@@ -77,5 +75,26 @@ class MondayAPI
         }
 
         return false;
+    }
+
+    private function replaceUnwantedCharacters($string) {
+        /* If this becomes
+          'Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A',
+            'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O',
+            'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a',
+            'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i',
+            'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u',
+            'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y',
+         */
+
+        $unwanted_array = ['﻿' => '', ' ' => ' ', '⦃' => '{', '〜' => '~', '〝' => '"', '〞' => '"', '〛' => ']', '〉' => '>', '〈' => '<', '«' => '"',
+            '­' => '-', '´' => '\'', '»' => '"', '÷' => '/', 'ǀ' => '|', 'ǃ' => '!', 'ʹ' => '\'', 'ʺ' => '"', 'ʼ' => '\'', '˄' => '^', 'ˆ' => '^', 'ˈ' => '\'',
+            'ˋ' => '`', 'ˍ' => '_', '˜' => '~', '̀' => '`', '́' => '\'', '̂' => '^', '̃' => '~', '̋' => '"', '̎' => '"', '̱' => '_', '̲' => '_', '̸' => '/',
+            '։' => ':', '׀' => '|', '׃' => ':', '٪' => '%', '٭' => '*', '‐' => '-', '‑' => '-', '‒' => '-', '–' => '-', '—' => '-', '―' => '-', '‖' => '|',
+            '‗' => '_', '‘' => '\'', '’' => '\'', '‚' => ',', '‛' => '\'', '“' => '"', '”' => '"', '„' => '"', '‟' => '"', '′' => '\'', '″' => '"', '‴' => '\'',
+            '‵' => '`', '‶' => '"', '‷' => '\'', '‸' => '^', '‹' => '<', '›' => '>', '‽' => '?', '⁄' => '/', '⁎' => '*', '⁒' => '%', '⁓' => '~', '⁠' => ' ',
+            '⃥' => '\\', '−' => '-', '∕' => '/', '∖' => '\\', '∗' => '*', '∣' => '|', '∶' => ':', '∼' => '~', '≤' => '<', '≥' => '>', '≦' => '<', '≧' => '>',
+            '⌃' => '^', '〈' => '<', '〉' => '>', '♯' => '#', '✱' => '*', '❘' => '|', '❢' => '!', '⟦' => '[', '⟨' => '<', '⟩' => '>', '⦄' => '}', '〃' => '"'];
+        return strtr($string, $unwanted_array);
     }
 }
