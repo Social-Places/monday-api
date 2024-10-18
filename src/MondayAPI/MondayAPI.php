@@ -7,7 +7,6 @@ class MondayAPI
     private $APIV2_Token;
     private $API_Url = "https://api.monday.com/v2/";
     private $debug = false;
-    private $error = null;
     
     const TYPE_QUERY = 'query';
     const TYPE_MUTAT = 'mutation';
