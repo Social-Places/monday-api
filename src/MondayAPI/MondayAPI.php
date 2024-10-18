@@ -10,6 +10,10 @@ class MondayAPI
 
     const TYPE_QUERY = 'query';
     const TYPE_MUTAT = 'mutation';
+    /**
+     * @var string
+     */
+    private $error;
 
     function __construct(bool $debug = false) {
         $this->debug = $debug;
