@@ -67,18 +67,8 @@ class MondayAPI
     }
 
     protected function response($data) {
-        if (!$data)
-            return false;
-
-        $json = json_decode($data, true);
-
-        if (isset($json['data'])) {
-            return $json['data'];
-        } else if (isset($json['errors']) && is_array($json['errors'])) {
-            return $json['errors'];
-        }
-
-        return false;
+        if (!$data) return false;
+        return json_decode($data, true);
     }
 
     private function replaceUnwantedCharacters($string) {
